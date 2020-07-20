@@ -34,7 +34,7 @@ func handle() string {
 		return err.Error()
 	}
 
-	_, err = db.Exec("CREATE TABLE [IF NOT EXISTS] mu_first_table (count INT NOT NULL);", nil)
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS my_first_table (count INT NOT NULL);", nil)
 	if err != nil {
 		return err.Error()
 	} else {
