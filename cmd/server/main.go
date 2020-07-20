@@ -20,11 +20,21 @@ func main() {
 		})
 	})
 
+	r.POST("/init", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": createTable(),
+		})
+	})
+
 	r.Run()
 
 }
 
 func handle() string {
+	return "PONG"
+}
+
+func createTable() string {
 	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		return err.Error()
@@ -34,10 +44,10 @@ func handle() string {
 		return err.Error()
 	}
 
-	_, err = db.Exec("CREATE TABLE IF NOT EXISTS my_first_table (count INT NOT NULL);", nil)
+	_, err = db.Exec("CREATE TABLE  my_first_table (count integer NOT NULL);", nil)
 	if err != nil {
 		return err.Error()
-	} else {
-		return "OK"
 	}
+
+	return "OK"
 }
