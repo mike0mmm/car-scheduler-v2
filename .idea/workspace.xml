@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="71ce7c34-73da-49e6-aec2-920140bb4bc3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/cmd/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1f63lkk4wXsA8K2oVZgneDMET3E" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71ce7c34-73da-49e6-aec2-920140bb4bc3" name="Default Changelist" comment="" />
+      <created>1595524867340</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595524867340</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="880" y="343" key="#Plugins" timestamp="1595526046653">
+      <screen x="0" y="23" width="2560" height="1345" />
+    </state>
+    <state x="880" y="343" key="#Plugins/-1440.499.1440.900/0.23.2560.1345/2560.326.1920.1080@0.23.2560.1345" timestamp="1595526046653" />
+    <state x="0" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595536008745">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="744" y="357" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1440.499.1440.900/0.23.2560.1345/2560.326.1920.1080@0.23.2560.1345" timestamp="1595526200794" />
+    <state x="0" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.821@0.23.1440.821" timestamp="1595536008745" />
+    <state x="894" y="480" width="771" height="467" key="EditFileWatcherDialog" timestamp="1595526303111">
+      <screen x="0" y="23" width="2560" height="1345" />
+    </state>
+    <state x="894" y="480" width="771" height="467" key="EditFileWatcherDialog/-1440.499.1440.900/0.23.2560.1345/2560.326.1920.1080@0.23.2560.1345" timestamp="1595526303111" />
+    <state x="781" y="334" key="SettingsEditor" timestamp="1595526303932">
+      <screen x="0" y="23" width="2560" height="1345" />
+    </state>
+    <state x="781" y="334" key="SettingsEditor/-1440.499.1440.900/0.23.2560.1345/2560.326.1920.1080@0.23.2560.1345" timestamp="1595526303932" />
+    <state x="945" y="330" width="670" height="676" key="search.everywhere.popup" timestamp="1595526254992">
+      <screen x="0" y="23" width="2560" height="1345" />
+    </state>
+    <state x="945" y="330" width="670" height="676" key="search.everywhere.popup/-1440.499.1440.900/0.23.2560.1345/2560.326.1920.1080@0.23.2560.1345" timestamp="1595526254992" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="car-scheduler_V2" type="b2602c69:ProjectViewProjectNode" />
+        <item name="car-scheduler_V2" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
+  </component>
+</project>
