@@ -2,12 +2,15 @@ package endpoints
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/mike0mmm/car-scheduler-v2/cmd/server/handlers"
+	handlersImpl "github.com/mike0mmm/car-scheduler-v2/cmd/server/handlers"
+	persister "github.com/mike0mmm/car-scheduler-v2/cmd/server/persiter"
 )
 
-func InitEdpoints(engine *gin.Engine) {
-	handlers := handlers.New()
-	engine.GET("/ping", handlers.GetPing())
+func InitEdpoints(engine *gin.Engine, persister persister.Persister) {
 
-	engine.POST("/init", handlers.GetInit())
+	handlers := handlersImpl.New(persister)
+	
+	engine.GET("/ping", handlers.GetPing())
+	engine.PUT("/company", handlers.AddCompany())
+	engine.POST("/stop/:stopId/contact", handlers.AddContact())
 }

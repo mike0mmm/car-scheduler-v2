@@ -1,20 +1,28 @@
 package handlers
 
 import (
-	"database/sql"
 	"fmt"
-	"os"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
+	"github.com/mike0mmm/car-scheduler-v2/cmd/server/models"
+	persister "github.com/mike0mmm/car-scheduler-v2/cmd/server/persiter"
+)
+
+const (
+    StopID = "stopId"
 )
 
 type Handlers struct {
+    persister persister.Persister
 }
 
-func New() Handlers {
-	return Handlers{}
+func New(persister persister.Persister) *Handlers {
+	return &Handlers{
+        persister: persister,
+    }
 }
+
 func (h *Handlers) GetPing() func(*gin.Context) {
 	return func(c *gin.Context) {
 		c.JSON(200, gin.H{
@@ -23,29 +31,40 @@ func (h *Handlers) GetPing() func(*gin.Context) {
 	}
 }
 
-func (h *Handlers) GetInit() func(*gin.Context) {
-	return func(c *gin.Context) {
-        
-        c.JSON(200, gin.H{
-			"message": createTable(),
-		})
-	}
+func (h *Handlers) AddContact() func(*gin.Context) {
+    return func(c *gin.Context) {
+        stopID := c.Params.ByName(StopID)
+        name, exists := c.GetQuery("name")
+        if exists {
+            fmt.Println("name exits: " + name)
+        }
+        phone, exists := c.GetQuery("phone")
+        if exists {
+            fmt.Println("phone exits: " + phone)
+        }
+
+        fmt.Printf("\n %s, %s, %s, %v \n", stopID, phone, name, exists)
+    }
+
 }
 
-func createTable() string {
-	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	if err != nil {
-		return fmt.Sprintf("failed to open connection. error: %s", err.Error()) 
-	}
-	err = db.Ping()
-	if err != nil {
-		return fmt.Sprintf("failed to ping. error: %s", err.Error())
-	}
+func (h *Handlers) AddCompany() func(*gin.Context) {
+    return func(c *gin.Context) {
+        company := models.Company{}
+        err := c.BindJSON(&company)
+        if err == nil {
+            if err := h.persister.SaveCompany(company); err != nil {
+                c.AbortWithError(500, err)
+            }
+            c.JSON(200, gin.H{
+                "message": "OK",
+            })
 
-	// _, err = db.Exec("CREATE TABLE  my_first_table (count integer NOT NULL);", nil)
-	// if err != nil {
-	// 	return err.Error()
-	// }
-
-	return "OK"
+            
+        } else {
+            c.JSON(400, gin.H{
+                "message": "invalid json in request",
+            })
+        }
+    }
 }

@@ -8,6 +8,5 @@ type Company struct {
     CompanyName string `json:"company_name"`
     Phone string
     SeconadaryPhone string `json:"phone_secondary"`
-    Users []int
 }
 
