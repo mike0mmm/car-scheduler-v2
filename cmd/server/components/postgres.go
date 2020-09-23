@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"os"
-
 	"github.com/mike0mmm/car-scheduler-v2/cmd/server/models"
 	persister "github.com/mike0mmm/car-scheduler-v2/cmd/server/persiter"
 	uuid "github.com/satori/go.uuid"
@@ -15,13 +14,17 @@ type postgres struct {
 }
 
 func NewPersisterComponent() (persister.Persister, error) {
-	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
-    	"password=%s dbname=%s sslmode=require",
-		os.Getenv("DATABASE_URL"),
-		os.Getenv("DATABASE_PORT"),
-		os.Getenv("DATABASE_USER"),
-		os.Getenv("DATABASE_PASSWORD"),
-		os.Getenv("DATABASE_NAME"))
+	psqlInfo := os.Getenv("DATABASE_URL")
+	if len(psqlInfo) == 0 {
+		psqlInfo = fmt.Sprintf("host=%s port=%s user=%s "+
+			"password=%s dbname=%s sslmode=require",
+			os.Getenv("LOCAL_DATABASE_URL"),
+			os.Getenv("LOCAL_DATABASE_PORT"),
+			os.Getenv("LOCAL_DATABASE_USER"),
+			os.Getenv("LOCAL_DATABASE_PASSWORD"),
+			os.Getenv("LOCAL_DATABASE_NAME"))
+	}
+
 		
 	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
