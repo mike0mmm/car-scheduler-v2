@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/mike0mmm/car-scheduler-v2/cmd/server/components"
@@ -20,6 +21,7 @@ func main() {
 	}
 
 	endpoints.InitEdpoints(r, persister)
-	r.Run("localhost:8080")
+	port := os.Getenv("PORT")
+	r.Run("0.0.0.0:" + port)
 
 }
