@@ -32,6 +32,9 @@ endif
 build: 
 	$(GO) build ./...
 
+update:
+	$(GO) get -u ./...
+
 ## lint: lint all go code
 lint: $(GOLANGCI_LINT)
 	$(GOLANGCI_LINT) run --fast --enable-all -D wsl -D testpackage -D godot -D goerr113

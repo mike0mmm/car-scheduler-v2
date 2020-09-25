@@ -82,11 +82,5 @@ func (p *postgres)SaveUser(user models.User) error {
 		user.City,
 		user.Address,
 		user.AccessToken)
-		
-		
-		
-		
-		
-		
 	return err
 }
