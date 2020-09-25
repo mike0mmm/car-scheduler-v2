@@ -58,3 +58,35 @@ func (p *postgres) SaveCompany(company models.Company) error {
 		company.CompanyName)
 	return err
 }
+
+func (p *postgres)SaveUser(user models.User) error {
+	query := `insert into user(username, user_id, role, profile_picture, phone_secondary, phone, 
+		password, name, license_types, license_number, licence_expiration_date, family_name≤, expiration_date,
+		email, date_of_birth, city, address, access_token) 
+		values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)`
+	_, err := p.db.Exec(query, 
+		user.Username,
+		user.UserId,
+		user.Role,
+		user.SecondaryPhonee,
+		user.Phone,
+		user.Password,
+		user.Name,
+		user.LicenseTypes,
+		user.LicenseNumber,
+		user.LicenceExpirationDate,
+		user.FamilyName,
+		user.ExpirationDate,
+		user.Email,
+		user.DateOfBirth,
+		user.City,
+		user.Address,
+		user.AccessToken)
+		
+		
+		
+		
+		
+		
+	return err
+}

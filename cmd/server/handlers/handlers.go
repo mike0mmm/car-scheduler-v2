@@ -68,3 +68,23 @@ func (h *Handlers) AddCompany() func(*gin.Context) {
         }
     }
 }
+
+func (h *Handlers)AddUser() func (*gin.Context) {
+    return func(c *gin.Context) {
+        user := models.User{}
+        err := c.BindJSON(&user)
+        if err == nil {
+            if err := h.persister.SaveUser(user); err != nil {
+                c.AbortWithError(500, err)
+            }
+            c.JSON(200, gin.H{
+                "message": "OK",
+            })
+            
+        } else {
+            c.JSON(400, gin.H{
+                "message": "invalid json in request",
+            })
+        }
+    }
+}
