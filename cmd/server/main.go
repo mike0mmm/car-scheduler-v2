@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-
+	
 	// TODO: add server configurations
 	r := gin.Default()
 
@@ -21,7 +21,12 @@ func main() {
 	}
 
 	endpoints.InitEdpoints(r, persister)
+	
 	port := os.Getenv("PORT")
-	r.Run("0.0.0.0:" + port)
+	address := os.Getenv("LOCALHOST")
+	if address == "" {
+		address = "0.0.0.0"
+	}
+	r.Run(address + ":" + port)
 
 }
