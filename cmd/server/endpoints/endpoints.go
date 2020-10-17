@@ -16,4 +16,5 @@ func InitEdpoints(engine *gin.Engine, persister persister.Persister) {
 	engine.POST("/user", handlers.AddUser())
 	engine.POST("/stop/:stopId/contact", handlers.AddContact())	
 	engine.POST("/car", handlers.AddCar())
+	engine.GET("/car/:licensePlate", handlers.GetCar())
 }

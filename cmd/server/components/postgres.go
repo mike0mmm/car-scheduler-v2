@@ -122,3 +122,15 @@ func (p *postgres) SaveCar(car models.Car) error {
 		car.Capacity)
 	return err
 }
+
+func (p *postgres) GetCar(licensePlate string) (models.Car, error) {
+	query := fmt.Sprintf("select * from car where license_plate='%s'", licensePlate)
+
+	car := models.Car{}
+	row := p.db.QueryRow(query)
+	err := row.Scan(&car.Name, &car.LicensePlate, &car.Model, &car.ManufacturingYear, &car.Description,
+		 &car.CarType, &car.VehicleLicenseExpiration, &car.InsuranceExpiration, &car.LastTreatment, 
+		 &car.LastBrakesCheck, &car.Capacity)
+	
+		 return car, err
+}

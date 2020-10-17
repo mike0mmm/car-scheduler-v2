@@ -12,5 +12,5 @@ type Persister interface {
 	// GetUser(string) (models.User, error)
 
 	SaveCar(models.Car) error
-	// GetCar(string) (models.Car, error)
+	GetCar(string) (models.Car, error)
 }

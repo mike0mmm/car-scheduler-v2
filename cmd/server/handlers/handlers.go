@@ -126,3 +126,23 @@ func (h *Handlers) AddCar() func(*gin.Context) {
 		}
 	}
 }
+
+func (h *Handlers) GetCar() func(*gin.Context) {
+	return func(c *gin.Context) {
+		licensePlate, exists := c.Params.Get("licensePlate")
+		if exists {
+			car, err := h.persister.GetCar(licensePlate)
+			if err != nil {
+				c.JSON(400, err)
+				return
+			}
+			
+			c.JSON(200, car)
+		} else {
+			c.JSON(400, gin.H{
+				"message": "invalid request, missing license plate number from path params",
+			})
+			return
+		}
+	}
+}
