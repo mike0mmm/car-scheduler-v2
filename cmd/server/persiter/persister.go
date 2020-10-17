@@ -9,7 +9,7 @@ type Persister interface {
 	GetCompany(string) (models.Company, error)
 
 	SaveUser(models.User) error
-	// GetUser(string) (models.User, error)
+	GetUser(string) (models.User, error)
 
 	SaveCar(models.Car) error
 	GetCar(string) (models.Car, error)

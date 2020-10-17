@@ -18,11 +18,11 @@ type User struct {
     Role string
     DateOfBirth time.Time `json:"date_of_birth" db:"date_of_birth"`
     ProfilePicture string `josn:"profile_picture" db:"profile_picture"`
-    SecondaryPhonee string `json:"phone_secondary" db:"phone_secondary"`
+    SecondaryPhone string `json:"phone_secondary" db:"phone_secondary"`
     Phone string 
     Password string
     Name string
-    LicenseTypes []string `json:"license_types" db:"license_types"`
+    LicenseTypes string `json:"license_types" db:"license_types"`
     LicenseNumber string `json:"license_number" db:"license_number"`
     LicenceExpirationDate time.Time `json:"licence_expiration_date" db:"licence_expiration_date"`
     FamilyName string `json:"family_name" db:"family_name"`

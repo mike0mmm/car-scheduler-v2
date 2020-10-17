@@ -13,7 +13,10 @@ func InitEdpoints(engine *gin.Engine, persister persister.Persister) {
 	engine.GET("/ping", handlers.GetPing())
 	engine.POST("/company", handlers.AddCompany())
 	engine.GET("/company/:name", handlers.GetCompany())
+
 	engine.POST("/user", handlers.AddUser())
+	engine.GET("/user/:userId", handlers.GetUser())
+
 	engine.POST("/stop/:stopId/contact", handlers.AddContact())	
 	engine.POST("/car", handlers.AddCar())
 	engine.GET("/car/:licensePlate", handlers.GetCar())

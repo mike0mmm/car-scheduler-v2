@@ -106,6 +106,26 @@ func (h *Handlers) AddUser() func(*gin.Context) {
 	}
 }
 
+func (h *Handlers) GetUser() func(*gin.Context) {
+	return func (c *gin.Context)  {
+		userID, exists := c.Params.Get("userId")
+
+		if exists {
+			user, err := h.persister.GetUser(userID)
+			if err != nil {
+				c.JSON(400, err)
+			} else {
+				c.JSON(200, user)
+			}
+		} else {
+			c.JSON(400, gin.H{
+				"message": "invalid request, missing userId from path params",
+			})
+		}
+
+	}
+}
+
 func (h *Handlers) AddCar() func(*gin.Context) {
 	return func(c *gin.Context) {
 		car := models.Car{}

@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lib/pq"
 	"github.com/mike0mmm/car-scheduler-v2/cmd/server/models"
 	persister "github.com/mike0mmm/car-scheduler-v2/cmd/server/persiter"
 	uuid "github.com/satori/go.uuid"
@@ -67,7 +66,7 @@ func (p *postgres) GetCompany(name string) (models.Company, error) {
 	c := models.Company{}
 	query := fmt.Sprintf("select * from company where name='%s'", name)
 	res := p.db.QueryRow(query)
-	
+
 	err := res.Scan(&c.Address, &c.City, &c.Phone, &c.SeconadaryPhone, &c.Email, &c.CompanyName, &c.LogoPath)
 	return c, err
 }
@@ -84,11 +83,11 @@ func (p *postgres) SaveUser(user models.User) error {
 		user.UserID,
 		user.Role,
 		user.ProfilePicture,
-		user.SecondaryPhonee,
+		user.SecondaryPhone,
 		user.Phone,
 		user.Password,
 		user.Name,
-		pq.Array(user.LicenseTypes),
+		user.LicenseTypes,
 		user.LicenseNumber,
 		user.LicenceExpirationDate,
 		user.FamilyName,
@@ -102,6 +101,36 @@ func (p *postgres) SaveUser(user models.User) error {
 	)
 	fmt.Println(res)
 	return err
+}
+
+func (p *postgres) GetUser(userId string) (models.User, error) {
+	query := fmt.Sprintf(`select * from "user" u where u.user_id='%s'`, userId)
+	row := p.db.QueryRow(query)
+
+	user := models.User{}
+
+	err := row.Scan(&user.UserID,
+		&user.Role,
+		&user.DateOfBirth,
+		&user.Name,
+		&user.FamilyName,
+		&user.Phone,
+		&user.SecondaryPhone,
+		&user.Email,
+		&user.Address,
+		&user.City,
+		&user.ProfilePicture,
+		&user.LicenseTypes,
+		&user.LicenceExpirationDate,
+		&user.LicenseNumber,
+		&user.AccessToken,
+		&user.ExpirationDate,
+		&user.Username,
+		&user.Password,
+		&user.Company,
+	)
+
+	return user, err
 }
 
 func (p *postgres) SaveCar(car models.Car) error {
@@ -129,8 +158,8 @@ func (p *postgres) GetCar(licensePlate string) (models.Car, error) {
 	car := models.Car{}
 	row := p.db.QueryRow(query)
 	err := row.Scan(&car.Name, &car.LicensePlate, &car.Model, &car.ManufacturingYear, &car.Description,
-		 &car.CarType, &car.VehicleLicenseExpiration, &car.InsuranceExpiration, &car.LastTreatment, 
-		 &car.LastBrakesCheck, &car.Capacity)
-	
-		 return car, err
+		&car.CarType, &car.VehicleLicenseExpiration, &car.InsuranceExpiration, &car.LastTreatment,
+		&car.LastBrakesCheck, &car.Capacity)
+
+	return car, err
 }
