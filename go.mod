@@ -23,8 +23,8 @@ require (
 	github.com/swaggo/files v0.0.0-20190704085106-630677cd5c14
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.7
-	github.com/ugorji/go v1.1.8 // indirect
-	golang.org/x/net v0.0.0-20200925080053-05aa5d4ee321 // indirect
+	github.com/ugorji/go v1.1.9 // indirect
+	golang.org/x/net v0.0.0-20200927032502-5d4f70055728 // indirect
 	golang.org/x/sys v0.0.0-20200926100807-9d91bd62050c // indirect
 	golang.org/x/tools v0.0.0-20200925191224-5d1fdd8fa346 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
