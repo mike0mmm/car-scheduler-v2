@@ -104,13 +104,11 @@ func (p *postgres) SaveUser(user models.User) error {
 	return err
 }
 
-// TODO: check if exists before inserting
 func (p *postgres) SaveCar(car models.Car) error {
-	query := `insert into user(car_id, name, license_plate, model, manufacturing_year, description, 
+	query := `insert into car(name, license_plate, model, manufacturing_year, description, 
 		car_type, vehicle_license_expiration, insurance_expiration, last_treatment, last_brakes_check, capacity) 
-		values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`
+		values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`
 	_, err := p.db.Exec(query,
-		car.CarID,
 		car.Name,
 		car.LicensePlate,
 		car.Model,

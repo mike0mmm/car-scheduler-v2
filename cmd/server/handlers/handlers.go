@@ -113,6 +113,7 @@ func (h *Handlers) AddCar() func(*gin.Context) {
 		if err == nil {
 			if err := h.persister.SaveCar(car); err != nil {
 				c.AbortWithError(400, err)
+				return
 			}
 			c.JSON(200, gin.H{
 				"message": "OK",

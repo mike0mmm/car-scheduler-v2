@@ -35,11 +35,10 @@ type User struct {
 }
 
 type Car struct {
-    CarID string `json:"car_id" db:"car_id"`
     Name string
     LicensePlate string `json:"license_plate" db:"license_plate"`
     Model string
-    ManufacturingYear string `json:manufacturing_year" db:manufacturing_year"`
+    ManufacturingYear string `json:"manufacturing_year" db:"manufacturing_year"`
     Description string
     CarType string `json:"car_type" db:"car_type"`
     VehicleLicenseExpiration string `json:"vehicle_license_expiration" db:"vehicle_license_expiration"`
